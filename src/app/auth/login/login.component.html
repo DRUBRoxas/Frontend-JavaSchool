@@ -1,0 +1,21 @@
+<form [formGroup]="loginForm">
+    <p class="text-danger">{{loginError}}</p>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email address</label>
+      <input formControlName="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+      <div *ngIf="email.invalid && (email.dirty || email.touched)"class="text-danger">
+        <div *ngIf="email.errors?.['required']">Email is required.</div>
+        <div *ngIf="email.errors?.['email']">
+          Email must be valid.
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input formControlName="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+      <div *ngIf="password.invalid && (password.dirty || password.touched)"class="text-danger">
+        <div *ngIf="password.errors?.['required']">password is required.</div>
+      </div>
+    </div>
+    <button type="submit" (click)="login()" class="btn btn-primary">Submit</button>
+  </form>
