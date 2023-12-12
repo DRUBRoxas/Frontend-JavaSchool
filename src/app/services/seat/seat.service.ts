@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environments';
 
@@ -11,7 +11,7 @@ export class SeatService {
 
   createSeat(idTrain:number)
   {
-    return this.http.post<any>(environment.urlApi+"seat/"+idTrain+"/addauto",idTrain);
+    return this.http.post<any>(environment.urlApi+"seat/"+idTrain+"/addauto",idTrain, {headers: new HttpHeaders({'Content-Type': 'application/json'})});
   }
 
   getSeatList()

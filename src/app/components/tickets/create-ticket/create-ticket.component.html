@@ -1,0 +1,32 @@
+<div class="container-fluid">
+  <div class="card" style="width: 50%; margin: 10px auto">
+    <div class="card-header">
+      <h3>Buy Ticket</h3>
+    </div>
+    <div class="card-body">
+      <div class="form-group">
+        <label for="passenger">Passenger</label>
+        <p-dropdown
+          [(ngModel)]="ticket.passenger"
+          id="passenger"
+          optionLabel="name"
+          [options]="passengers"
+        ></p-dropdown>
+        <label for="schedule">Schedule</label>
+        <input
+          type="text"
+          pInputText
+          [value]="id"
+          id="schedule"
+          disabled="true"
+        />
+      </div>
+      <p-button
+        (onClick)="create()"
+        type="submit"
+        class="btn btn-primary"
+        label="Buy"
+      ></p-button>
+    </div>
+  </div>
+</div>

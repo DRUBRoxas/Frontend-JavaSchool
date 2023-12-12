@@ -42,6 +42,7 @@
                 <td>
                     <button pButton class="btn btn-danger" (click)="deleteSchedule(schedule.id)">Delete</button>
                     <button pButton [routerLink]="['/edit-schedule',schedule.id]" class="btn btn-warning">Update</button>
+                    <button pButton [routerLink]="['/buy-ticket/schedule/',schedule.id]" class="btn btn-info">Buy Ticket</button>
                 </td>
             </tr>
         </tbody>

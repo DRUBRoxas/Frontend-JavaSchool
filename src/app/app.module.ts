@@ -35,6 +35,8 @@ import { EditPassengerComponent } from './components/passenger/edit-passenger/ed
 import { CreatePassengerComponent } from './components/passenger/create-passenger/create-passenger.component';
 import { JwtInterceptorService } from './services/auth/jwt-interceptor.service';
 import { ErrorInterceptorService } from './services/auth/error-interceptor.service';
+import { CreateTicketComponent } from './components/tickets/create-ticket/create-ticket.component';
+import { ListTicketComponent } from './components/tickets/list-ticket/list-ticket.component';
 
 
 
@@ -60,6 +62,8 @@ import { ErrorInterceptorService } from './services/auth/error-interceptor.servi
     PassengerListComponent,
     EditPassengerComponent,
     CreatePassengerComponent,
+    CreateTicketComponent,
+    ListTicketComponent
   ],
   imports: [
     BrowserModule,

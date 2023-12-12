@@ -1,0 +1,28 @@
+<div class="container-fluid">
+    <table class="table table-light">
+        <thead class="thead-light">
+            <tr>
+                <th>Id</th>
+                <th>Passenger</th>
+                <th>Origin</th>
+                <th>Destination</th>
+                <th>Departure time</th>
+                <th>Seat number</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor='let ticket of tickets'>
+                <td>{{ticket.id}}</td>
+                <td>{{ticket.passenger.name}}</td>
+                <td>{{ticket.schedule.originStation.stationName}}</td>
+                <td>{{ticket.schedule.departureStation.stationName}}</td>
+                <td>{{ticket.schedule.departureTime}}</td>
+                <td>{{ticket.seat.seatNumber}}</td>
+                <td>
+                    <button pButton icon="pi pi-delete" class="btn btn-danger" (click)="deleteTicket(ticket.id)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -15,7 +15,6 @@
                 <td>{{passenger.dateBirth}}</td>
                 <td>
                     <button  class="btn btn-danger" (click)="deletePassenger(passenger.id)">Delete</button>
-                    <button [routerLink]="['/edit-passenger',passenger.id]" class="btn btn-warning">Update</button>
                 </td>
             </tr>
         </tbody>

@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { LoginRequest } from './loginRequest';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { BehaviorSubject, Observable, catchError, map, tap, throwError } from 'rxjs';
-import { User } from '../../class/user';
 import { environment } from '../../environments/environments';
 
 @Injectable({

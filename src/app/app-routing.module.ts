@@ -14,6 +14,8 @@ import { CreateTrainComponent } from './components/train/create-train/create-tra
 import { PassengerListComponent } from './components/passenger/passenger-list/passenger-list.component';
 import { CreatePassengerComponent } from './components/passenger/create-passenger/create-passenger.component';
 import { EditPassengerComponent } from './components/passenger/edit-passenger/edit-passenger.component';
+import { CreateTicketComponent } from './components/tickets/create-ticket/create-ticket.component';
+import { ListTicketComponent } from './components/tickets/list-ticket/list-ticket.component';
 
 const routes: Routes = [
   {path:'home',component:DashboardComponent,title:'Home'},
@@ -30,6 +32,9 @@ const routes: Routes = [
   {path:'passenger-list',component:PassengerListComponent,title:'List Passenger'},
   {path:'create-passenger',component:CreatePassengerComponent,title:'Add Passenger'},
   {path:'edit-passenger/:id', component:EditPassengerComponent,title:'Edit Passenger'},
+  {path:'buy-ticket/schedule/:id', component:CreateTicketComponent,title:'Buy Ticket'},
+  {path:'ticket-list', component:ListTicketComponent,title:'List Ticket'},
+
 ];
 
 @NgModule({

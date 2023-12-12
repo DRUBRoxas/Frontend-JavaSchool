@@ -13,11 +13,14 @@
         <li class="nav-item">
           <a class="nav-link" [routerLink]="['/schedule-list']">Schedules</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/train-list']">Trains</a>
-        </li>
+          <li class="nav-item" >
+            <a class="nav-link" [routerLink]="['/train-list']">Trains</a>
+          </li>
         <li class="nav-item">
           <a class="nav-link" [routerLink]="['/passenger-list']">Passengers</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/ticket-list']">Tickets</a>
         </li>
         <li *ngIf="!userLoginOn" class="nav-item">
           <a class="nav-link" href="/login">Log in</a>
