@@ -1,0 +1,21 @@
+<div class="container-fluid">
+    <div class="card" style="width: 50%;margin: 10px auto;">
+        <div class="card-header">
+            <h3>Create Station</h3>
+        </div>
+        <div class="card-body">
+                <div class="form-group">
+                    <label for="stationName">Station Name</label>
+                    <input [(ngModel)]="station.stationName" type="text" class="form-control" id="stationName">
+                </div>
+                <button (click)="saveStation()" type="submit" class="btn btn-primary" style="margin-top: 10px;">Submit</button>
+        </div>
+        <div class="card-footer" *ngIf="showAlert">
+            <div class="alert alert-success" role="alert">
+                <strong>Success!</strong>
+                <button class="close" (click)="closeAlert()">&times;</button>
+                
+            </div>
+        </div>
+    </div> 
+</div>

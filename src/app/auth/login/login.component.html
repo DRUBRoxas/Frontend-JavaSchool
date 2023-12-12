@@ -1,4 +1,4 @@
-<form [formGroup]="loginForm">
+<form class="center" style="width: 50%; margin:10px auto" [formGroup]="loginForm">
     <p class="text-danger">{{loginError}}</p>
     <div class="form-group">
       <label for="exampleInputEmail1">Email address</label>
@@ -19,3 +19,5 @@
     </div>
     <button type="submit" (click)="login()" class="btn btn-primary">Submit</button>
   </form>
+
+  <h3 style="width: 50%; margin:10px auto">Don't have an account? <button class="btn btn-success" [routerLink]="['/register']">Register</button></h3>

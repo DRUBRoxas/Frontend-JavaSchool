@@ -1,0 +1,14 @@
+<div class="container-fluid">
+    <div class="card" style="width: 50%;margin: 10px auto;">
+        <div class="card-header">
+            <h3>Create Station</h3>
+        </div>
+        <div class="card-body">
+                <div class="form-group">
+                    <label for="stationName">Station Name</label>
+                    <input [(ngModel)]="station.stationName" type="text" class="form-control" id="stationName">
+                </div>
+                <button (click)="updateStation()" type="submit" class="btn btn-primary" style="margin-top: 10px;">Update</button>
+        </div>
+    </div> 
+</div>

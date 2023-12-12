@@ -1,0 +1,17 @@
+<p-card styleClass="user-form" class="flex justify-content-center">
+        <form (ngSubmit)="onSubmit()" #trainForm="ngForm">
+            <div class='field'>
+                    <label for="name">First Name</label>
+                    <input type="text" pInputText name="name" placeholder="name" [(ngModel)]="passenger.name"/>
+            </div>
+            <div class='field'>
+                <label for="lastname">Last Name</label>
+                <input type="text" pInputText name="lastname" placeholder="lastname" [(ngModel)]="passenger.lastname"/>
+            </div>
+            <div class="field">
+                <label for="dateBirth">Date of Birth</label>
+                <p-calendar name="dateBirth" [(ngModel)]="passenger.dateBirth" dateFormat="dd/mm/yy" [showIcon]="true"></p-calendar>
+            </div>
+            <p-button type="submit" label="Submit" [disabled]="!trainForm.form.valid" [rounded]="true"></p-button>
+        </form>
+</p-card>

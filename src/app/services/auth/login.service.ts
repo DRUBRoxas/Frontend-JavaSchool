@@ -1,28 +1,41 @@
 import { Injectable } from '@angular/core';
 import { LoginRequest } from './loginRequest';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { BehaviorSubject, Observable, catchError, tap, throwError } from 'rxjs';
-import { User } from './user';
+import { BehaviorSubject, Observable, catchError, map, tap, throwError } from 'rxjs';
+import { User } from '../../class/user';
+import { environment } from '../../environments/environments';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class LoginService {
 
   currentUserLoginOn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  currentUserData: BehaviorSubject<User> = new BehaviorSubject<User>({id:0,email:'',name:'',lastname:''});
+  currentUserData: BehaviorSubject<String> = new BehaviorSubject<String>("");
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient) {
+     this.currentUserLoginOn=new BehaviorSubject<boolean>(sessionStorage.getItem("token")!=null);
+     this.currentUserData=new BehaviorSubject<String>(sessionStorage.getItem("token") || "");
+   }
 
-  login(credentials:LoginRequest):Observable<User>{ 
+  login(credentials:LoginRequest):Observable<any>{ 
     //TODO: call the api to authenticate the user
-    return this.http.get<User>('././assets/data.json').pipe(
-      tap((userData : User)=> {
-        this.currentUserData.next(userData);
+    return this.http.post<any>(environment.urlHost+"auth/login",credentials).pipe(
+      tap((userData)=> {
+        sessionStorage.setItem("token",userData.token);
+        this.currentUserData.next(userData.token);
         this.currentUserLoginOn.next(true);
       }),
+      map((userData)=> userData.token),
       catchError(this.handleError)
     );
+  }
+
+  logout(){
+    sessionStorage.removeItem("token");
+    this.currentUserData.next("");
+    this.currentUserLoginOn.next(false);
   }
 
   private handleError(error:HttpErrorResponse){
@@ -38,9 +51,16 @@ export class LoginService {
     return throwError(()=> new Error('Something bad happened; please try again later.'));
   }
 
-  get userData():Observable<User>{
+  get userData():Observable<String>{
     return this.currentUserData.asObservable();
   }
 
+  get userLoginOn():Observable<boolean>{
+    return this.currentUserLoginOn.asObservable();
+  }
+
+  get userToken():String{
+    return this.currentUserData.value;
+  }
 
 }

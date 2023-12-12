@@ -1,0 +1,11 @@
+<div class="formContainer">
+    <h1>Create train</h1>
+    <form style="width: 50%;margin: 10px auto; " (ngSubmit)="onSubmit()" #trainForm="ngForm">
+        <div class='form-group'>
+                <label for="departure">Train Number</label>
+                <p-inputNumber inputId="integeronly" name="id" [(ngModel)]="train.id"> </p-inputNumber>
+
+        </div>
+        <p-button type="submit" label="Submit" [disabled]="!trainForm.form.valid" [rounded]="true"></p-button>
+    </form>
+</div> 

@@ -1,0 +1,24 @@
+<div class="container-fluid">
+    <table class="table table-light">
+        <thead class="thead-light">
+            <tr>
+                <th>Name</th>
+                <th>Lastname</th>
+                <th>Date Birth</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor='let passenger of passengers'>
+                <td>{{passenger.name}}</td>
+                <td>{{passenger.lastname}}</td>
+                <td>{{passenger.dateBirth}}</td>
+                <td>
+                    <button  class="btn btn-danger" (click)="deletePassenger(passenger.id)">Delete</button>
+                    <button [routerLink]="['/edit-passenger',passenger.id]" class="btn btn-warning">Update</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <button class="btn btn-primary" [routerLink]="['/create-passenger']">Add new Passenger</button>
+</div>

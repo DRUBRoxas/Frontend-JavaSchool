@@ -1,0 +1,22 @@
+<div class="container-fluid">
+    <table class="table table-light" style="width: 50%; margin: 10px auto">
+        <thead class="thead-light">
+            <tr>
+                <th>Id</th>
+                <th>Seats</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor='let train of trains'>
+                <td>{{train.id}}</td>
+                <td>{{train.seats}}</td>
+                <td>
+                    <button pButton class="btn btn-danger" (click)="deleteTrain(train.id)">Delete</button>
+                    <button pButton (click)="addSeat(train.id)" class="btn btn-warning">Añadir asiento</button>
+                </td>
+            </tr>
+        </tbody>
+        <button class="btn btn-primary" [routerLink]="['/create-train']">Add train</button>
+    </table>
+</div>

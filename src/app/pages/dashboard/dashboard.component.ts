@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { LoginService } from '../../services/auth/login.service';
-import { User } from '../../services/auth/user';
+import { User } from '../../class/user';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,12 +16,6 @@ export class DashboardComponent implements OnInit, OnDestroy{
     this.loginService.currentUserLoginOn.subscribe({
       next: (userLoginOn) => {
         this.userLoginOn =userLoginOn;
-      }
-    });
-
-    this.loginService.currentUserData.subscribe({
-      next: (userData) => {
-        this.userData =userData;
       }
     });
   }

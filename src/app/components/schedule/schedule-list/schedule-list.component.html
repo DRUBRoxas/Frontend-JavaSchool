@@ -1,0 +1,50 @@
+<div class="formContainer" style="display: flex; flex-direction: row; justify-content: center; align-items: center;">
+    <form style="width: 80%;margin: 10px auto; " (ngSubmit)="onSubmit()" #scheduleForm="ngForm">
+        <div class='form-group ' style="display: flex; flex-direction: row; justify-content: space-between; align-items: center;">
+            <label for="departure" style="flex: 1;">Start Time</label>
+            <p-calendar id="departure" class="form-control" inputId="departure" name="departureTime"  [timeOnly]="true" [(ngModel)]="search.start" [showIcon]="true" [showTime]="true"></p-calendar>
+
+            <label for="arrival" style="flex: 1;">End Time</label>
+            <p-calendar id="arrival" class="form-control" inputId="arrival" name="arrival" [timeOnly]="true" [(ngModel)]="search.end" [showIcon]="true" [showTime]="true"></p-calendar>
+        </div>
+        <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: center;">
+            <label for="origin" style="flex: 1;">Origin Station</label>
+            <p-dropdown class="form-control" [options]="stations" inputId="origin" name="origin" [(ngModel)]="search.origin" [virtualScroll]="true" [virtualScrollItemSize]="38" [editable]="true" optionLabel="stationName" optionValue="id"></p-dropdown>
+
+            <label for="Destination" style="flex: 1;">Destination Station</label>
+            <p-dropdown class="form-control" [options]="stations" inputId="Destination" name="DestinationStat" [(ngModel)]="search.destination" [virtualScroll]="true" [virtualScrollItemSize]="38" [editable]="true" optionLabel="stationName" optionValue="id"></p-dropdown>
+        </div>
+        <p-button type="submit" label="Submit" [disabled]="!scheduleForm.form.valid" [rounded]="true"></p-button>
+    </form>
+</div> 
+
+<div class="container-fluid">
+    <table class="table table-light">
+        <thead class="thead-light">
+            <tr>
+                <th>Id</th>
+                <th>origin time</th>
+                <th>end time</th>
+                <th>Station origin</th>
+                <th>Station destination</th>
+                <th>Train number</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor='let schedule of schedules'>
+                <td>{{schedule.id}}</td>
+                <td>{{schedule.arrivalTime}}</td>
+                <td>{{schedule.departureTime}}</td>
+                <td>{{schedule.originStation.stationName}}</td>
+                <td>{{schedule.departureStation.stationName}}</td>
+                <td>{{schedule.train.id}}</td>
+                <td>
+                    <button pButton class="btn btn-danger" (click)="deleteSchedule(schedule.id)">Delete</button>
+                    <button pButton [routerLink]="['/edit-schedule',schedule.id]" class="btn btn-warning">Update</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <button class="btn btn-primary" [routerLink]="['/create-schedule']">Add schedule</button>
+</div>
